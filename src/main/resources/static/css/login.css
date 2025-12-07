@@ -1,0 +1,72 @@
+/* Fondo y centrado */
+body {
+  background: linear-gradient(to right, #2d578d, #5179b0);
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Caja principal del login */
+.login-box {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Botones tipo de usuario */
+.btn-toggle {
+  margin-bottom: 1rem;
+}
+
+/* Formularios */
+.user-form {
+  margin-top: 0.5rem;
+}
+
+.user-form .form-label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.user-form .mb-3 {
+  margin-bottom: 0.8rem;
+}
+
+/* Botones de envío */
+.user-form .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+.left-side {
+      background-image: url("https://images.pexels.com/photos/7944130/pexels-photo-7944130.jpeg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      min-height: 100vh;
+}
+
+/* SUPERPOSICIÓN AZUL */
+.left-side::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 70, 150, 0.55);
+}
+
+/* MITAD DERECHA: LOGIN LIMPIO */
+.right-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f8f9fa; /* fondo gris claro limpio */
+}

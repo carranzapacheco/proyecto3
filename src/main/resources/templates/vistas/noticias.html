@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias - Colegio Ejemplar</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar desde fragmento -->
+  <div th:replace="fragments/nav :: nav"></div>
+
+  <!-- Sección Noticias -->
+  <section class="container my-5">
+    <h2 class="text-center mb-4 fw-bold">Últimas Noticias</h2>
+    <div class="row g-4">
+
+      <!-- Card Noticia 1 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow">
+          <img th:src="@{/multimedia/noticia1.png}" class="card-img-top" alt="Noticia 1">
+          <div class="card-body">
+            <h5 class="card-title">Ganadores Olimpiadas de Matemática</h5>
+            <p class="card-text">
+              Nuestros alumnos brillaron en las Olimpiadas Nacionales de Matemática 2025, obteniendo 2 medallas de oro y 3 de plata frente a más de 500 estudiantes de todo el país. <br>
+              Los ganadores fueron Ana Lucía Ramos y José Miguel Quispe (oro), junto a Camila Torres, Luis Gutiérrez y Diego Flores (plata). <br>
+              Este logro es fruto del esfuerzo de los estudiantes y del Club de Matemática Escolar.
+            </p>
+            <p class="fw-bold">¡Un orgullo para toda nuestra comunidad educativa!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Noticia 2 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow">
+          <img th:src="@{/multimedia/noticia2.png}" class="card-img-top" alt="Noticia 2">
+          <div class="card-body">
+            <h5 class="card-title">Taller de Robótica Escolar</h5>
+            <p class="card-text">
+              Durante tres semanas se realizó con éxito el Taller de Robótica Escolar 2025, en el que más de 60 estudiantes de secundaria aprendieron a programar y diseñar robots. <br>
+              Entre los proyectos desarrollados destacaron un robot recolector de residuos, un brazo mecánico con sensores y un vehículo autónomo. <br>
+              El evento culminó con una exposición abierta a padres y docentes, fomentando el aprendizaje de habilidades STEAM y la innovación tecnológica en nuestros alumnos.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Noticia 3 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card h-100 shadow">
+          <img th:src="@{/multimedia/noticia3.png}" class="card-img-top" alt="Noticia 3">
+          <div class="card-body">
+            <h5 class="card-title">Concurso Literario 2025</h5>
+            <p class="card-text">
+              Nuestros estudiantes participaron en el Concurso Literario Regional 2025, demostrando talento en redacción, creatividad y amor por la cultura peruana. <br>
+              Destacaron los logros de María Fernanda López (3.° secundaria), quien obtuvo el primer lugar en Cuento Corto con “La voz de los Andes”, y de Gabriel Sánchez (5.° secundaria), quien recibió mención honrosa en Poesía con “Susurros del viento”. <br>
+              Ambos representarán al colegio en la fase nacional que se realizará en Cusco este noviembre, todo el apoyo para ellos.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer desde fragmento -->
+  <div th:replace="fragments/footer :: footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

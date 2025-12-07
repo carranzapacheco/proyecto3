@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro - Colegio Ejemplar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .is-valid { border-color: #198754 !important; }
+    .is-invalid { border-color: #dc3545 !important; }
+    .error-msg { color: #dc3545; font-size: 0.9em; margin-top: 4px; }
+  </style>
+</head>
+<body class="bg-light">
+
+<a th:href="@{/login}" class="btn btn-secondary position-fixed top-0 end-0 m-3">← Volver al login</a>
+
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+  <div class="card shadow-lg border-0 p-4" style="max-width: 450px; width: 100%;">
+    <div class="text-center mb-4">
+      <img th:src="@{/multimedia/logo-colegio.png}" width="90" alt="Logo">
+      <h4 class="mt-3 text-primary">Registro de Usuario</h4>
+    </div>
+
+    <div th:if="${error}" class="alert alert-danger text-center py-2" th:text="${error}"></div>
+
+    <form id="registroForm" th:action="@{/registro}" method="post" novalidate>
+      <div class="mb-3">
+        <label class="form-label">Tipo de usuario</label>
+        <select class="form-select" name="rol" required>
+          <option value="">Seleccionar...</option>
+          <option value="ALUMNO">Alumno</option>
+          <option value="DOCENTE">Docente</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="nombre" required>
+        <div class="error-msg"></div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Apellido</label>
+        <input type="text" class="form-control" name="apellido" required>
+        <div class="error-msg"></div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Correo institucional</label>
+        <input type="email" class="form-control" name="email" placeholder="usuario@colegio.ejemplar" required>
+        <div class="error-msg"></div>
+      </div>
+
+      <div class="mb-3 position-relative">
+        <label for="contrasenaInput" class="form-label">Contraseña</label>
+        <div class="input-group">
+          <input
+            type="password"
+            class="form-control"
+            id="contrasenaInput"
+            name="contrasena"
+            required
+            placeholder="Ingresa tu contraseña"
+          />
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            id="togglePassword"
+            tabindex="-1"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+              class="bi bi-eye" viewBox="0 0 16 16">
+              <path d="M16 8s-3-5.5-8-5.5S0 8 0 
+                      8s3 5.5 8 5.5S16 8 16 8zM8 
+                      12a4 4 0 1 1 0-8 4 4 0 0 
+                      1 0 8zm0-1.5a2.5 2.5 0 1 
+                      0 0-5 2.5 2.5 0 0 0 0 
+                      5z"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Barra de fuerza -->
+        <div id="passwordStrength" class="mt-2"></div>
+
+        <!-- Mensaje de error o de ayuda -->
+        <div class="error-msg text-danger small mt-1"></div>
+
+      </div>
+
+
+    <div class="mb-3" id="campoGrado" style="display:none;">
+      <label class="form-label">Nivel</label>
+      <select class="form-select" id="nivelSelect">
+        <option value="">Seleccione...</option>
+        <option value="Primaria">Primaria</option>
+        <option value="Secundaria">Secundaria</option>
+      </select>
+
+      <label class="form-label mt-2">Grado</label>
+      <select class="form-select" id="gradoSelect">
+        <option value="">Seleccione un grado...</option>
+      </select>
+
+      <!-- Este es el valor FINAL que llega al servidor -->
+      <input type="hidden" name="grado" id="gradoFinal">
+    </div>
+
+
+      <div class="mb-3" id="campoEspecialidad" style="display:none;">
+        <label class="form-label">Asignatura</label>
+        <select class="form-select" name="especialidad">
+          <option value="">Seleccionar...</option>
+          <option value="Matemáticas">Matemáticas</option>
+          <option value="Comunicación">Comunicación</option>
+          <option value="Ciencias">Ciencias</option>
+          <option value="Historia">Historia</option>
+          <option value="Educación Física">Educación Física</option>
+          <option value="Inglés">Inglés</option>
+        </select>
+      </div>
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </div>
+    </form>
+
+    <div class="text-center mt-3">
+      <small>¿Ya tienes cuenta? <a th:href="@{/login}" class="fw-bold">Inicia sesión</a></small>
+    </div>
+  </div>
+</div>
+
+<script th:src="@{/js/registro.js}"></script>
+
+</body>
+</html>

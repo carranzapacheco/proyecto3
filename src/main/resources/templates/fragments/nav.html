@@ -1,0 +1,21 @@
+<!-- templates/fragments/nav.html -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2d578d;" th:fragment="nav">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" th:href="@{/inicio}">
+      <img th:src="@{/multimedia/logo-colegio.png}" alt="logo" width="50" class="me-3">
+      Colegio Ejemplar
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" th:href="@{/inicio}">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/noticias}">Noticias</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/talleres}">Talleres</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/contacto}">Contacto</a></li>
+        <li class="nav-item"><a class="btn btn-outline-light ms-2" th:href="@{/login}">Iniciar Sesión</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

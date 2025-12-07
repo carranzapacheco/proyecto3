@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administrador</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <style>
+        .card-img-top {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .section-title {
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Panel de Administrador</span>
+        <a href="/logout" class="btn btn-outline-light">Cerrar sesión</a>
+    </div>
+</nav>
+
+<div class="container py-5">
+
+    <h2 class="text-center mb-4">Bienvenido Administrador</h2>
+
+    <!-- ==================== ALUMNOS ==================== -->
+    <h3 class="section-title">Gestión de Alumnos</h3>
+    <div class="row row-cols-1 row-cols-md-4 g-4" id="alumnos-container">
+        <div class="col" th:each="a : ${alumnos}" th:attr="data-id=${a.id}">
+            <div class="card h-100 shadow-sm text-center">
+                <img th:src="${a.fotoUrl != null ? a.fotoUrl : '/images/default-alumno.png'}"
+                     class="card-img-top" alt="Foto Alumno">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${a.nombre} + ' ' + ${a.apellido}"></h5>
+                    <p class="card-text">
+                        <strong>Correo:</strong> <span th:text="${a.usuario != null ? a.usuario.email : 'Sin correo'}"></span><br>
+                        <strong>Grado:</strong> <span th:text="${a.grado}"></span>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-danger btn-sm btn-eliminar-alumno">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== DOCENTES ==================== -->
+    <h3 class="section-title">Gestión de Docentes</h3>
+    <div class="row row-cols-1 row-cols-md-4 g-4" id="docentes-container">
+        <div class="col" th:each="d : ${docentes}" th:attr="data-id=${d.id}">
+            <div class="card h-100 shadow-sm text-center">
+                <img th:src="${d.fotoUrl != null ? d.fotoUrl : '/images/default-docente.png'}"
+                     class="card-img-top" alt="Foto Docente">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${d.nombre} + ' ' + ${d.apellido}"></h5>
+                    <p class="card-text">
+                        <strong>Correo:</strong> <span th:text="${d.usuario != null ? d.usuario.email : 'Sin correo'}"></span><br>
+                        <strong>Especialidad:</strong> <span th:text="${d.especialidad}"></span>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-danger btn-sm btn-eliminar-docente">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- ==================== COMENTARIOS ==================== -->
+    <h3 class="section-title">Comentarios del sitio</h3>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-striped" id="tabla-comentarios">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Comentario</th>
+                        <th>Fecha</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <!-- Se llena por JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--modal para eliminar-->
+    <div class="modal fade" id="modalConfirmacionEliminar" tabindex="-1" aria-labelledby="modalConfirmacionEliminarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="modalConfirmacionEliminarLabel">Confirmar Eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="modalEliminarMensaje"></p> <input type="hidden" id="entidadIdEliminar"> <input type="hidden" id="entidadTipoEliminar"> </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="btnConfirmarEliminar">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JQuery (para AJAX) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script th:src="@{/js/admin.js}"></script>
+
+</body>
+</html>

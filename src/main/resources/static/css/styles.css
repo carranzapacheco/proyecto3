@@ -1,0 +1,196 @@
+/* ================== GENERAL ================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+}
+
+/* ================== NAVBAR ================== */
+.navbar .nav-link {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar .nav-link:hover {
+    color: #f9d342; /* color dorado de acento */
+}
+
+.btn-outline-light {
+    border-color: #f9d342;
+    color: #f9d342;
+    transition: all 0.3s;
+}
+
+.btn-outline-light:hover {
+    background-color: #f9d342;
+    color: #2d578d;
+}
+
+/* ================== CARDS ================== */
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 0.95rem;
+}
+
+/* ================== FOOTER ================== */
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* ================== CAROUSEL ================== */
+.carousel-item img {
+    height: 400px;       /* PC y pantallas grandes */
+    object-fit: cover;   /* evita deformaciones */
+}
+
+/* Para tablets */
+@media (max-width: 992px) {
+    .carousel-item img {
+        height: 300px;
+    }
+}
+
+/* Para celulares */
+@media (max-width: 576px) {
+    .carousel-item img {
+        height: 200px;
+    }
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 768px) {
+    .card img {
+        height: 150px;
+    }
+}
+
+
+:root{ --brand-1:#002d6b; --soft:#f7f9fc; }
+
+.section-bleed{
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.soft-card{ border:0; border-radius:1rem; box-shadow: 0 10px 24px rgba(0,0,0,.06); }
+.icon-circle-sm{ width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px; }
+.badge.bg-soft-secondary{ background:rgba(0,45,107,.08); color:var(--brand-1); border:1px solid rgba(0,45,107,.12); font-weight:500; }
+
+/* Chips de acción */
+.chip-action{
+  display:inline-flex; align-items:center; gap:.4rem;
+  padding:.45rem .8rem; border-radius:999px; font-size:.9rem;
+  background:rgba(0,45,107,.06); color:var(--brand-1); text-decoration:none;
+  border:1px solid rgba(0,45,107,.12); transition:all .15s ease;
+}
+.chip-action:hover{ background:var(--brand-1); color:#fff; transform:translateY(-1px); }
+
+/* KPIs */
+.kpi-card{ background:#fff; border-radius:1rem; padding:1rem; text-align:center; box-shadow:0 8px 18px rgba(0,0,0,.05); }
+.kpi-card i{ font-size:1.4rem; color:var(--brand-1); }
+.kpi-num{ font-size:1.6rem; font-weight:800; line-height:1; margin-top:.25rem; color:#222; }
+.kpi-label{ font-size:.85rem; color:#6c757d; }
+
+/* Tabla */
+.nice-table tbody tr{ transition: transform .12s ease, background .12s ease; }
+.nice-table tbody tr:hover{ background:rgba(0,45,107,.03); transform:translateY(-1px); }
+
+/* Logos bancos */
+.bank-logo{
+  filter: grayscale(25%) contrast(105%);
+  transform: perspective(400px) rotateX(0) rotateY(0);
+  transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+.bank-logo:hover{
+  filter:none; transform: perspective(400px) rotateX(3deg) rotateY(-4deg) translateY(-2px);
+}
+
+/* Mapa */
+.map-border{ box-shadow: inset 0 0 0 2px rgba(0,45,107,.08); border:1px solid rgba(0,0,0,.06); }
+.has-indicator{ position:relative; }
+.has-indicator.active::after{
+  content:""; position:absolute; left:50%; transform:translateX(-50%);
+  bottom:-6px; width:22px; height:3px; border-radius:99px; background:var(--brand-1);
+}
+
+/* Skeleton del mapa */
+.map-skeleton{
+  display:block; width:100%; height:260px; border-radius:.75rem; margin-bottom:.75rem;
+  background: linear-gradient(90deg,#e9eef5 25%, #f4f7fb 37%, #e9eef5 63%);
+  background-size: 400% 100%; animation: shimmer 1.4s infinite linear;
+}
+@keyframes shimmer{ 0%{background-position:0 0;} 100%{background-position:100% 0;} }
+
+/* Reveal on scroll */
+.reveal{ opacity:0; transform: translateY(12px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.revealed{ opacity:1; transform:none; }
+
+/* Floating WhatsApp */
+.fab-whatsapp{
+  position: fixed; right:16px; bottom:18px; z-index:1040;
+  width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  background:#25D366; color:#fff; box-shadow:0 10px 20px rgba(37,211,102,.35); text-decoration:none;
+  transition: transform .15s ease;
+}
+.fab-whatsapp:hover{ transform: translateY(-2px) scale(1.03); }
+
+
+.nice-table td:first-child{
+  display: flex;              
+  flex-direction: column;     
+  align-items: flex-start;    
+  gap: .25rem;               
+}
+
+
+/* ↑ Aumenta la altura de los logos */
+.logos { --logo-h: 40px; }          
+
+.logo-box{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:var(--logo-h);
+  width:180px;                       
+}
+
+.logo-box img{
+  height:100%;                       
+  width:auto;
+  max-height:100%;
+  max-width:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* Más grandes en pantallas medianas+ */
+@media (min-width:768px){
+  .logos { --logo-h: 70px; }         
+}
+
+/* CONTACTO*/
+.section-opiniones { background: var(--bs-body-bg); }
+  .opiniones-header {
+    background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.00));
+    border: 1px solid var(--bs-border-color);
+  }
+  /* Item de comentario */
+  .comment-item { display:flex; gap:12px; align-items:flex-start; padding:16px 20px; }
+  .comment-item + .comment-item { border-top: 1px solid var(--bs-border-color); }
+  .comment-avatar {
+    width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: var(--bs-primary-bg-subtle);
+    color: var(--bs-primary); font-weight:600;
+    flex: 0 0 40px;
+  }
+  .comment-body h6 { margin:0; }
+  .comment-meta { font-size: .85rem; color: var(--bs-secondary-color); }
