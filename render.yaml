@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: proyecto3
+    env: docker
+    dockerfilePath: Dockerfile
+    plan: free
