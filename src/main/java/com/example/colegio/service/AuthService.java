@@ -83,13 +83,21 @@ public class AuthService {
     }
 
     public void crearAdminSiNoExiste() {
-        if (usuarioRepository.findByEmail("admin@colegio.com").isEmpty()) {
+        // Obtener email y contraseña desde variables de entorno, con valores por defecto
+        String adminEmail = System.getenv().getOrDefault("ADMIN_EMAIL", "admin@colegio.com");
+        String adminPass = System.getenv().getOrDefault("ADMIN_PASS", "admin123");
+
+        // Verificar si el admin ya existe
+        if (usuarioRepository.findByEmail(adminEmail).isEmpty()) {
             Usuario admin = new Usuario();
-            admin.setEmail("admin@colegio.com");
-            admin.setContrasena(passwordEncoder.encode("admin123"));
+            admin.setEmail(adminEmail);
+            admin.setContrasena(passwordEncoder.encode(adminPass));
             admin.setRol(Usuario.Rol.ADMIN);
             usuarioRepository.save(admin);
-            System.out.println("Nuevo administrador por defecto creado.");
+
+            System.out.println("✅ Nuevo administrador por defecto creado: " + adminEmail);
+        } else {
+            System.out.println("ℹ️ Administrador ya existente: " + adminEmail);
         }
     }
 
