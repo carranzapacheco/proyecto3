@@ -42,7 +42,7 @@ public class DocenteController {
 
         model.addAttribute("alumnos", alumnoService.obtenerTodos());
 
-        return "sesiones/docente";
+        return "sesiones/Docente";
     }
 
     // PERFIL DEL DOCENTE
