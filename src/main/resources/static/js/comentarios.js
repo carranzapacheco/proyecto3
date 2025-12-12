@@ -1,5 +1,8 @@
 (() => {
-  const API_URL = "http://localhost:8080/api/comentario";
+  // Detectar entorno: localhost o producción
+  const API_URL = window.location.hostname.includes("localhost")
+    ? "http://localhost:8080/api/comentario"
+    : "/api/comentario";
 
   const $lista = document.getElementById("lista-comentarios");
   const $form = document.getElementById("form-comentario");
@@ -17,7 +20,7 @@
     if (badge) badge.textContent = `${n} comentario${n === 1 ? "" : "s"}`;
   };
 
-  //  Cargar comentarios desde la API 
+  // Cargar comentarios desde la API
   async function cargar() {
     try {
       const res = await fetch(API_URL);
@@ -51,7 +54,7 @@
     }
   }
 
-  // Enviar nuevo comentario con validación visual 
+  // Enviar nuevo comentario con validación visual
   $form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -73,7 +76,7 @@
 
       const data = await res.json();
 
-      // Si hay errores de validación (lista)
+      // Si hay errores de validación
       if (Array.isArray(data)) {
         data.forEach((msg) => {
           if (msg.toLowerCase().includes("nombre")) {
