@@ -1,5 +1,5 @@
 (() => {
-  const API_URL = "http://localhost:8080/api/contacto";
+  const API_URL = "https://colegio-cekh.onrender.com/api/contacto";
   const $form = document.querySelector(".container form");
   const modal = new bootstrap.Modal(document.getElementById("modalContacto"));
   const modalTitulo = document.getElementById("modalTitulo");
