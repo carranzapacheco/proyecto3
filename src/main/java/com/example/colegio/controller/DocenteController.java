@@ -1,6 +1,7 @@
 package com.example.colegio.controller;
 
 import com.example.colegio.service.AlumnoService;
+import com.example.colegio.service.CloudinaryService;
 import com.example.colegio.model.Docente;
 import com.example.colegio.model.Usuario;
 import com.example.colegio.service.DocenteService;
@@ -13,11 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 @Controller
 public class DocenteController {
 
@@ -26,6 +22,9 @@ public class DocenteController {
 
     @Autowired
     private AlumnoService alumnoService;
+
+    @Autowired
+    private CloudinaryService cloudinaryService;
 
     // PÁGINA PRINCIPAL DEL DOCENTE
     @GetMapping("/docente")
@@ -85,23 +84,12 @@ public class DocenteController {
         docente.setApellido(apellido);
         docente.setEspecialidad(especialidad);
 
-        // Subir foto
+        // Subir foto a Cloudinary
         if (foto != null && !foto.isEmpty()) {
             try {
-                String rutaUploads = new File("src/main/resources/static/uploads").getAbsolutePath();
-                Path rutaCarpeta = Paths.get(rutaUploads);
-
-                if (!Files.exists(rutaCarpeta)) {
-                    Files.createDirectories(rutaCarpeta);
-                }
-
-                String nombreLimpio = Paths.get(foto.getOriginalFilename()).getFileName().toString();
-                String nombreArchivo = "docente_" + docente.getId() + "_" + nombreLimpio;
-                Path rutaArchivo = rutaCarpeta.resolve(nombreArchivo);
-
-                foto.transferTo(rutaArchivo.toFile());
-
-                docente.setFotoUrl("/uploads/" + nombreArchivo);
+                String publicId = "docente_" + docente.getId();
+                String url = cloudinaryService.upload(foto, publicId);
+                docente.setFotoUrl(url);
             } catch (Exception e) {
                 e.printStackTrace();
             }
