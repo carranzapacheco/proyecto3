@@ -1,4 +1,4 @@
-const API_COMENTARIOS = "http://localhost:8080/admin/comentarios";
+const API_COMENTARIOS = `${window.location.origin}/admin/comentarios`;
 
 // ================== MOSTRAR MODAL DE ELIMINACIÓN ==================
 function mostrarModalEliminar(tipo, elemento) {
